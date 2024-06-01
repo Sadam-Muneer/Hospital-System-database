@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS Patient (
     Discharge_Date DATE,
     PRIMARY KEY (Patient_ID) 
     );
-    -- .........Add column in patient table.............
+    -- .........Add column in patient table ..............
     
     ALTER Table Patient
     ADD COLUMN Patient_city VARCHAR(20) DEFAULT 'Multan';
