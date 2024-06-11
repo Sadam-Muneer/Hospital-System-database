@@ -9,11 +9,11 @@ CREATE TABLE IF NOT EXISTS doctor (
 -- Insert sample data into Doctor table
 INSERT INTO doctor (doctor_id, name, specialization, contact) 
 VALUES 
-    (1, 'Dr. Muhammad Ali', 'Cardiologist', '+92-123-456789'),
-    (2, 'Dr. Fatima Khan', 'Pediatrician', '+92-987-654321'),
-    (3, 'Dr. Ahmed Hassan', 'Orthopedic Surgeon', '+92-333-123456'),
-    (4, 'Dr. Aisha Mahmood', 'Gynecologist', '+92-345-678901'),
-    (5, 'Dr. Bilal Ahmed', 'Neurologist', '+92-321-098765');
+    (1, 'Dr.Ali', 'Cardiologist', '03054561544'),
+    (2, 'Dr.Fatima', 'Pediatrician', '03064561544'),
+    (3, 'Dr.Ahmed', 'Orthopedic Surgeon', '03074561544'),
+    (4, 'Dr.Zahra', 'Gynecologist', '03084561544'),
+    (5, 'Dr.Bilal', 'Neurologist', '03094561544');
     
 -- Create patient table if it doesn't exist
 CREATE TABLE IF NOT EXISTS patient (
@@ -26,11 +26,11 @@ CREATE TABLE IF NOT EXISTS patient (
 -- Insert sample data into Patient table
 INSERT INTO patient (patient_id, name, gender, contact) 
 VALUES 
-    (101, 'Ali Raza', 'Male', '+92-111-222333'),
-    (102, 'Sara Khan', 'Female', '+92-333-444555'),
-    (103, 'Ahmed Khan', 'Male', '+92-555-666777'),
-    (104, 'Aisha Malik', 'Female', '+92-777-888999'),
-    (105, 'Zainab Ali', 'Female', '+92-999-000111');
+    (101, 'Ali', 'Male', '03044561544'),
+    (102, 'Sara', 'Female', '03044561545'),
+    (103, 'Ahmed', 'Male', '03044561546'),
+    (104, 'Zahra', 'Female', '03044561547'),
+    (105, 'Zainab', 'Female', '03044561548');
 
 -- Create appointment table if it doesn't exist
 CREATE TABLE IF NOT EXISTS appointment (
@@ -63,11 +63,11 @@ CREATE TABLE IF NOT EXISTS staff (
 -- Insert sample data into Staff table
 INSERT INTO staff (staff_id, name, position, contact) 
 VALUES 
-    (301, 'Ayesha Ali', 'Nurse', '+92-333-111222'),
-    (302, 'Khalid Khan', 'Receptionist', '+92-555-444777'),
-    (303, 'Fahad Ahmed', 'Janitor', '+92-999-888111'),
-    (304, 'Sana Malik', 'Pharmacist', '+92-777-666999'),
-    (305, 'Hamza Raza', 'Lab Technician', '+92-111-000333');
+    (301, 'Ayesha Ali', 'Nurse', '03043361544'),
+    (302, 'Khalid Khan', 'Receptionist', '03044561522'),
+    (303, 'Fahad Ahmed', 'Janitor', '03044561555'),
+    (304, 'Sana Malik', 'Pharmacist', '03044561564'),
+    (305, 'Hamza Raza', 'Lab Technician', '03044561342');
 
 -- Create room table if it doesn't exist
 CREATE TABLE IF NOT EXISTS room (
@@ -84,3 +84,4 @@ VALUES
     (503, 'ICU', FALSE),
     (504, 'Maternity', TRUE),
     (505, 'Single', FALSE);
+
