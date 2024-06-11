@@ -1,127 +1,86 @@
--- Create hospital database if not exists
-CREATE DATABASE IF NOT EXISTS hospital;
-USE hospital;
-
--- Table Patient
-CREATE TABLE IF NOT EXISTS Patient (
-    Patient_ID INT NOT NULL AUTO_INCREMENT,
-    Patient_FName VARCHAR(20) NOT NULL,
-    Patient_LName VARCHAR(20) NOT NULL,
-    Phone VARCHAR(12) NOT NULL,
-    Blood_Type VARCHAR(5) NOT NULL,
-    Email VARCHAR(50) NOT NULL,
-    Gender VARCHAR(10),
-    Condition_ VARCHAR(30),
-    Admission_Date DATE,
-    Discharge_Date DATE,
-    Room_ID INT,
-    PRIMARY KEY (Patient_ID),
-    FOREIGN KEY (Room_ID) REFERENCES Room(Room_ID)
+-- Doctor Table
+CREATE TABLE doctor (
+    doctor_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    specialization VARCHAR(50),
+    contact VARCHAR(20)
 );
 
--- Insert data into Patient
-INSERT INTO Patient (Patient_ID, Patient_FName, Patient_LName, Phone, Blood_Type, Email, Gender, Condition_, Admission_Date, Discharge_Date, Room_ID) 
-VALUES
-(1, 'Ahmed', 'Khan', '03001234567', 'A+', 'ahmed.khan@gmail.com', 'Male', 'Flu', '2023-01-10', '2023-01-15', 101),
-(2, 'Yasmeen', 'Ali', '03011234567', 'B+', 'yasmeen.ali@gmail.com', 'Female', 'Diabetes', '2023-02-12', '2023-02-20', 102),
-(3, 'Mohammed', 'Rafiq', '03021234567', 'O-', 'mohammed.rafiq@gmail.com', 'Male', 'Hypertension', '2023-03-10', '2023-03-18', 103),
-(4, 'Fatima', 'Hussain', '03031234567', 'AB+', 'fatima.hussain@gmail.com', 'Female', 'Asthma', '2023-04-14', '2023-04-22', 104),
-(5, 'Bilal', 'Ahmad', '03041234567', 'A-', 'bilal.ahmad@gmail.com', 'Male', 'Fracture', '2023-05-10', '2023-05-17', 105);
+-- Insert sample data into Doctor table
+INSERT INTO doctor (doctor_id, name, specialization, contact) 
+VALUES 
+    (1, 'Dr. Muhammad Ali', 'Cardiologist', '+92-123-456789'),
+    (2, 'Dr. Fatima Khan', 'Pediatrician', '+92-987-654321'),
+    (3, 'Dr. Ahmed Hassan', 'Orthopedic Surgeon', '+92-333-123456'),
+    (4, 'Dr. Aisha Mahmood', 'Gynecologist', '+92-345-678901'),
+    (5, 'Dr. Bilal Ahmed', 'Neurologist', '+92-321-098765');
 
--- Table Department
-CREATE TABLE IF NOT EXISTS Department (
-    Dept_ID INT NOT NULL AUTO_INCREMENT,
-    Dept_Head VARCHAR(20) NOT NULL,
-    Dept_Name VARCHAR(15) NOT NULL,
-    Emp_Count INT,
-    PRIMARY KEY (Dept_ID)
+-- Patient Table
+CREATE TABLE patient (
+    patient_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    gender ENUM('Male', 'Female', 'Other'),
+    contact VARCHAR(20)
 );
 
--- Insert data into Department
-INSERT INTO Department (Dept_Head, Dept_Name, Emp_Count) 
-VALUES
-('Dr. Asim', 'Cardiology', 10),
-('Dr. Nadia', 'Neurology', 8),
-('Dr. Ali', 'Orthopedics', 12),
-('Dr. Sara', 'Pediatrics', 15),
-('Dr. Zafar', 'Oncology', 7);
+-- Insert sample data into Patient table
+INSERT INTO patient (patient_id, name, gender, contact) 
+VALUES 
+    (101, 'Ali Raza', 'Male', '+92-111-222333'),
+    (102, 'Sara Khan', 'Female', '+92-333-444555'),
+    (103, 'Ahmed Khan', 'Male', '+92-555-666777'),
+    (104, 'Aisha Malik', 'Female', '+92-777-888999'),
+    (105, 'Zainab Ali', 'Female', '+92-999-000111');
 
--- Table Room
-CREATE TABLE IF NOT EXISTS Room (
-    Room_ID INT NOT NULL AUTO_INCREMENT,
-    Room_Type VARCHAR(20) NOT NULL,
-    PRIMARY KEY (Room_ID)
+-- Appointment Table
+CREATE TABLE appointment (
+    appointment_id INT PRIMARY KEY,
+    doctor_id INT,
+    patient_id INT,
+    date DATE,
+    time TIME,
+    FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
+    FOREIGN KEY (patient_id) REFERENCES patient(patient_id)
 );
 
--- Insert data into Room
-INSERT INTO Room (Room_Type)
-VALUES
-('General Ward'),
-('ICU'),
-('Private Room'),
-('Surgical Ward'),
-('Maternity Ward');
+-- Insert sample data into Appointment table
+INSERT INTO appointment (appointment_id, doctor_id, patient_id, date, time) 
+VALUES 
+    (201, 1, 101, '2024-06-15', '10:00:00'),
+    (202, 2, 102, '2024-06-16', '11:00:00'),
+    (203, 3, 103, '2024-06-17', '12:00:00'),
+    (204, 4, 104, '2024-06-18', '13:00:00'),
+    (205, 5, 105, '2024-06-19', '14:00:00');
 
--- Table Staff
-CREATE TABLE IF NOT EXISTS Staff (
-    Emp_ID INT NOT NULL AUTO_INCREMENT,
-    Emp_FName VARCHAR(20) NOT NULL,
-    Emp_LName VARCHAR(20) NOT NULL,
-    Date_Joining DATE DEFAULT CURRENT_DATE,
-    Date_Separation DATE,
-    Emp_Type VARCHAR(20) NOT NULL,
-    Email VARCHAR(50) NOT NULL,
-    Address VARCHAR(50) NOT NULL,
-    Dept_ID INT NOT NULL,
-    SSN INT NOT NULL,
-    PRIMARY KEY (Emp_ID),
-    FOREIGN KEY (Dept_ID) REFERENCES Department (Dept_ID)
+-- Staff Table
+CREATE TABLE staff (
+    staff_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    position VARCHAR(50),
+    contact VARCHAR(20)
 );
 
--- Insert data into Staff
-INSERT INTO Staff (Emp_FName, Emp_LName, Emp_Type, Email, Address, Dept_ID, SSN) 
-VALUES
-('Asim', 'Khan', 'Doctor', 'asim.khan@gmail.com', 'House 1, Street 2, City A', 1, 123456789),
-('Nadia', 'Ali', 'Doctor', 'nadia.ali@gmail.com', 'House 3, Street 4, City B', 2, 223456789),
-('Ali', 'Hussain', 'Doctor', 'ali.hussain@gmail.com', 'House 5, Street 6, City C', 3, 323456789),
-('Sara', 'Ahmed', 'Doctor', 'sara.ahmed@gmail.com', 'House 7, Street 8, City D', 4, 423456789),
-('Zafar', 'Shaikh', 'Doctor', 'zafar.shaikh@gmail.com', 'House 9, Street 10, City E', 5, 523456789);
+-- Insert sample data into Staff table
+INSERT INTO staff (staff_id, name, position, contact) 
+VALUES 
+    (301, 'Ayesha Ali', 'Nurse', '+92-333-111222'),
+    (302, 'Khalid Khan', 'Receptionist', '+92-555-444777'),
+    (303, 'Fahad Ahmed', 'Janitor', '+92-999-888111'),
+    (304, 'Sana Malik', 'Pharmacist', '+92-777-666999'),
+    (305, 'Hamza Raza', 'Lab Technician', '+92-111-000333');
 
--- Table Doctor
-CREATE TABLE IF NOT EXISTS Doctor (
-    Doctor_ID INT NOT NULL AUTO_INCREMENT,
-    Emp_ID INT NOT NULL,
-    Specialization VARCHAR(50) NOT NULL,
-    PRIMARY KEY (Doctor_ID),
-    FOREIGN KEY (Emp_ID) REFERENCES Staff (Emp_ID)
+-- Room Table
+CREATE TABLE room (
+    room_number INT PRIMARY KEY,
+    type ENUM('Single', 'Double', 'ICU', 'Maternity'),
+    availability BOOLEAN
 );
 
--- Insert data into Doctor
-INSERT INTO Doctor (Emp_ID, Specialization) 
-VALUES
-(1, 'Cardiologist'),
-(2, 'Neurologist'),
-(3, 'Orthopedic Surgeon'),
-(4, 'Pediatrician'),
-(5, 'Oncologist');
-
--- Table Appointment
-CREATE TABLE IF NOT EXISTS Appointment (
-    Appointment_ID INT NOT NULL AUTO_INCREMENT,
-    Doctor_ID INT NOT NULL,
-    Patient_ID INT NOT NULL,
-    Appointment_Date DATE NOT NULL,
-    Appointment_Time TIME NOT NULL,
-    PRIMARY KEY (Appointment_ID),
-    FOREIGN KEY (Doctor_ID) REFERENCES Doctor (Doctor_ID),
-    FOREIGN KEY (Patient_ID) REFERENCES Patient (Patient_ID)
-);
-
--- Insert data into Appointment (Sample Data)
-INSERT INTO Appointment (Doctor_ID, Patient_ID, Appointment_Date, Appointment_Time)
-VALUES
-(1, 1, '2023-01-11', '09:00:00'),
-(2, 2, '2023-02-13', '10:00:00'),
-(3, 3, '2023-03-11', '11:00:00'),
-(4, 4, '2023-04-15', '12:00:00'),
-(5, 5, '2023-05-11', '13:00:00');
+-- Insert sample data into Room table
+INSERT INTO room (room_number, type, availability) 
+VALUES 
+    (501, 'Single', TRUE),
+    (502, 'Double', TRUE),
+    (503, 'ICU', FALSE),
+    (504, 'Maternity', TRUE),
+    (505, 'Single', FALSE);
