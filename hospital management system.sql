@@ -1,5 +1,5 @@
--- Doctor Table
-CREATE TABLE doctor (
+-- Create doctor table if it doesn't exist
+CREATE TABLE IF NOT EXISTS doctor (
     doctor_id INT PRIMARY KEY,
     name VARCHAR(50),
     specialization VARCHAR(50),
@@ -14,12 +14,12 @@ VALUES
     (3, 'Dr. Ahmed Hassan', 'Orthopedic Surgeon', '+92-333-123456'),
     (4, 'Dr. Aisha Mahmood', 'Gynecologist', '+92-345-678901'),
     (5, 'Dr. Bilal Ahmed', 'Neurologist', '+92-321-098765');
-
--- Patient Table
-CREATE TABLE patient (
+    
+-- Create patient table if it doesn't exist
+CREATE TABLE IF NOT EXISTS patient (
     patient_id INT PRIMARY KEY,
     name VARCHAR(50),
-    gender ENUM('Male', 'Female', 'Other'),
+    gender VARCHAR(10),
     contact VARCHAR(20)
 );
 
@@ -32,8 +32,8 @@ VALUES
     (104, 'Aisha Malik', 'Female', '+92-777-888999'),
     (105, 'Zainab Ali', 'Female', '+92-999-000111');
 
--- Appointment Table
-CREATE TABLE appointment (
+-- Create appointment table if it doesn't exist
+CREATE TABLE IF NOT EXISTS appointment (
     appointment_id INT PRIMARY KEY,
     doctor_id INT,
     patient_id INT,
@@ -46,14 +46,14 @@ CREATE TABLE appointment (
 -- Insert sample data into Appointment table
 INSERT INTO appointment (appointment_id, doctor_id, patient_id, date, time) 
 VALUES 
-    (201, 1, 101, '2024-06-15', '10:00:00'),
-    (202, 2, 102, '2024-06-16', '11:00:00'),
-    (203, 3, 103, '2024-06-17', '12:00:00'),
-    (204, 4, 104, '2024-06-18', '13:00:00'),
-    (205, 5, 105, '2024-06-19', '14:00:00');
+    (201, 1, 101, '01-06-2024', '10AM'),
+    (202, 2, 102, '01-06-2024', '11AM'),
+    (203, 3, 103, '02-06-2024', '12AM'),
+    (204, 4, 104, '02-06-2024', '13AM'),
+    (205, 5, 105, '03-06-2024', '14AM');
 
--- Staff Table
-CREATE TABLE staff (
+-- Create staff table if it doesn't exist
+CREATE TABLE IF NOT EXISTS staff (
     staff_id INT PRIMARY KEY,
     name VARCHAR(50),
     position VARCHAR(50),
@@ -69,10 +69,10 @@ VALUES
     (304, 'Sana Malik', 'Pharmacist', '+92-777-666999'),
     (305, 'Hamza Raza', 'Lab Technician', '+92-111-000333');
 
--- Room Table
-CREATE TABLE room (
+-- Create room table if it doesn't exist
+CREATE TABLE IF NOT EXISTS room (
     room_number INT PRIMARY KEY,
-    type ENUM('Single', 'Double', 'ICU', 'Maternity'),
+    type VARCHAR(20),
     availability BOOLEAN
 );
 
