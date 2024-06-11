@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS hospital;
 USE hospital;
--- ..............Table Patient...............
+-- .............Table Patient...............
 CREATE TABLE IF NOT EXISTS Patient (
     Patient_ID INT NOT NULL,
     Patient_FName VARCHAR(20) NOT NULL,
@@ -14,29 +14,16 @@ CREATE TABLE IF NOT EXISTS Patient (
     Discharge_Date DATE,
     PRIMARY KEY (Patient_ID) 
     );
-    -- .........Add column in patient table ..............
-    
-    ALTER Table Patient
-    ADD COLUMN Patient_city VARCHAR(20) DEFAULT 'Multan';
-    
+    -- hello
+
       -- Insert data into Patient
 INSERT INTO Patient (Patient_ID, Patient_FName, Patient_LName, Phone, Blood_Type, Email, Gender, Condition_, Admission_Date, Discharge_Date) 
 VALUES
-(1, 'Ahmed', 'Khan', '03001234567', 'A+', 'ahmed.khan@example.com', 'Male', 'Flu', '2023-01-10', '2023-01-15'),
-(2, 'yasmeen', 'Ali', '03011234567', 'B+', 'yasmeen.ali@example.com', 'Female', 'Diabetes', '2023-02-12', '2023-02-20'),
-(3, 'Mohammed', 'Rafiq', '03021234567', 'O-', 'mohammed.rafiq@example.com', 'Male', 'Hypertension', '2023-03-10', '2023-03-18'),
-(4, 'Fatima', 'Hussain', '03031234567', 'AB+', 'fatima.hussain@example.com', 'Female', 'Asthma', '2023-04-14', '2023-04-22'),
-(5, 'Bilal', 'Ahmad', '03041234567', 'A-', 'bilal.ahmad@example.com', 'Male', 'Fracture', '2023-05-10', '2023-05-17'),
-(6, 'Zainab', 'Shaikh', '03051234567', 'B-', 'zainab.shaikh@example.com', 'Female', 'Anemia', '2023-06-05', '2023-06-15'),
-(7, 'Hassan', 'Qureshi', '03061234567', 'O+', 'hassan.qureshi@example.com', 'Male', 'Migraine', '2023-07-08', '2023-07-14'),
-(8, 'AliHassan', 'Farooq', '03071234567', 'A+', 'AliHassan.farooq@example.com', 'Male', 'Allergy', '2023-08-11', '2023-08-19'),
-(9, 'Ali', 'Javed', '03081234567', 'B+', 'ali.javed@example.com', 'Male', 'Heart Disease', '2023-09-13', '2023-09-22'),
-(10, 'Maria', 'Zafar', '03091234567', 'O-', 'maria.zafar@example.com', 'Female', 'Skin Infection', '2023-10-15', '2023-10-23'),
-(11, 'Usman', 'Ibrahim', '03101234567', 'AB-', 'usman.ibrahim@example.com', 'Male', 'Cancer', '2023-11-17', '2023-11-25'),
-(12, 'Sara', 'Nasir', '03111234567', 'A+', 'sara.nasir@example.com', 'Female', 'Kidney Stone', '2023-12-19', '2023-12-27'),
-(13, 'Imran', 'Hameed', '03121234567', 'B+', 'imran.hameed@example.com', 'Male', 'Liver Disease', '2024-01-10', '2024-01-18'),
-(14, 'Rida', 'Mustafa', '03131234567', 'O+', 'rida.mustafa@example.com', 'Female', 'Thyroid', '2024-02-11', '2024-02-19'),
-(15, 'Kamran', 'Abbas', '03141234567', 'AB+', 'kamran.abbas@example.com', 'Male', 'Stroke', '2024-03-12', '2024-03-20');
+(1, 'Ahmed', 'Khan', '03001234567', 'A+', 'ahmed.khan@gmail.com', 'Male', 'Flu', '2023-01-10', '2023-01-15'),
+(2, 'yasmeen', 'Ali', '03011234567', 'B+', 'yasmeen.ali@gmail.com', 'Female', 'Diabetes', '2023-02-12', '2023-02-20'),
+(3, 'Mohammed', 'Rafiq', '03021234567', 'O-', 'mohammed.rafiq@gmail.com', 'Male', 'Hypertension', '2023-03-10', '2023-03-18'),
+(4, 'Fatima', 'Hussain', '03031234567', 'AB+', 'fatima.hussain@gmail.com', 'Female', 'Asthma', '2023-04-14', '2023-04-22'),
+(5, 'Bilal', 'Ahmad', '03041234567', 'A-', 'bilal.ahmad@gmail.com', 'Male', 'Fracture', '2023-05-10', '2023-05-17'),
 -- ..............Table Department...............
 CREATE TABLE IF NOT EXISTS Department (
     Dept_ID INT NOT NULL,
@@ -53,16 +40,7 @@ VALUES
 (3, 'Dr. Ali', 'Orthopedics', 12),
 (4, 'Dr. Sara', 'Pediatrics', 15),
 (5, 'Dr. Zafar', 'Oncology', 7),
-(6, 'Dr. Yasmin', 'Gynecology', 9),
-(7, 'Dr. Bilal', 'Dermatology', 6),
-(8, 'Dr. yasmeen', 'ENT', 5),
-(9, 'Dr. Kamran', 'Ophthalmology', 8),
-(10, 'Dr. Raza', 'Gastronterology', 7),
-(11, 'Dr. Umer', 'Urology', 4),
-(12, 'Dr. Nadia', 'Rheumatology', 6),
-(13, 'Dr. Ahmed', 'Psychiatry', 10),
-(14, 'Dr. Farooq', 'Pulmonology', 5),
-(15, 'Dr. Hina', 'Nephrology', 4);
+
 -- ..............Table Staff...............
 CREATE TABLE IF NOT EXISTS Staff (
     Emp_ID INT  NOT NULL,
@@ -81,21 +59,21 @@ CREATE TABLE IF NOT EXISTS Staff (
    -- Insert data into Staff
 INSERT INTO Staff (Emp_ID, Emp_FName, Emp_LName, Date_Joining, Date_Seperation, Emp_Type, Email, Address, Dept_ID, SSN) 
 VALUES
-(1, 'Asim', 'Khan', '2022-01-01', NULL, 'Doctor', 'asim.khan@example.com', 'House 1, Street 2, City A', 1, 123456789),
-(2, 'Nadia', 'Ali', '2022-02-01', NULL, 'Doctor', 'nadia.ali@example.com', 'House 3, Street 4, City B', 2, 223456789),
-(3, 'Ali', 'Hussain', '2022-03-01', NULL, 'Doctor', 'ali.hussain@example.com', 'House 5, Street 6, City C', 3, 323456789),
-(4, 'Sara', 'Ahmed', '2022-04-01', NULL, 'Doctor', 'sara.ahmed@example.com', 'House 7, Street 8, City D', 4, 423456789),
-(5, 'Zafar', 'Shaikh', '2022-05-01', NULL, 'Doctor', 'zafar.shaikh@example.com', 'House 9, Street 10, City E', 5, 523456789),
-(6, 'Yasmin', 'Farooq', '2022-06-01', NULL, 'Doctor', 'yasmin.farooq@example.com', 'House 11, Street 12, City F', 6, 623456789),
-(7, 'Bilal', 'Ibrahim', '2022-07-01', NULL, 'Doctor', 'bilal.ibrahim@example.com', 'House 13, Street 14, City G', 7, 723456789),
-(8, 'yasmeen', 'Raza', '2022-08-01', NULL, 'Doctor', 'yasmeen.raza@example.com', 'House 15, Street 16, City H', 8, 823456789),
-(9, 'Kamran', 'Javed', '2022-09-01', NULL, 'Doctor', 'kamran.javed@example.com', 'House 17, Street 18, City I', 9, 923456789),
-(10, 'Raza', 'Mustafa', '2022-10-01', NULL, 'Doctor', 'raza.mustafa@example.com', 'House 19, Street 20, City J', 10, 123456780),
-(11, 'Umer', 'Zafar', '2022-11-01', NULL, 'Doctor', 'umer.zafar@example.com', 'House 21, Street 22, City K', 11, 223456780),
-(12, 'Nadia', 'Iqbal', '2022-12-01', NULL, 'Doctor', 'nadia.iqbal@example.com', 'House 23, Street 24, City L', 12, 323456780),
-(13, 'Ahmed', 'Qureshi', '2023-01-01', NULL, 'Doctor', 'ahmed.qureshi@example.com', 'House 25, Street 26, City M', 13, 423456780),
-(14, 'Farooq', 'Khan', '2023-02-01', NULL, 'Doctor', 'farooq.khan@example.com', 'House 27, Street 28, City N', 14, 523456780),
-(15, 'Hina', 'Nasir', '2023-03-01', NULL, 'Doctor', 'hina.nasir@example.com', 'House 29, Street 30, City O', 15, 623456780);
+(1, 'Asim', 'Khan', '2022-01-01', NULL, 'Doctor', 'asim.khan@gmail.com', 'House 1, Street 2, City A', 1, 123456789),
+(2, 'Nadia', 'Ali', '2022-02-01', NULL, 'Doctor', 'nadia.ali@gmail.com', 'House 3, Street 4, City B', 2, 223456789),
+(3, 'Ali', 'Hussain', '2022-03-01', NULL, 'Doctor', 'ali.hussain@gmail.com', 'House 5, Street 6, City C', 3, 323456789),
+(4, 'Sara', 'Ahmed', '2022-04-01', NULL, 'Doctor', 'sara.ahmed@gmail.com', 'House 7, Street 8, City D', 4, 423456789),
+(5, 'Zafar', 'Shaikh', '2022-05-01', NULL, 'Doctor', 'zafar.shaikh@gmail.com', 'House 9, Street 10, City E', 5, 523456789),
+(6, 'Yasmin', 'Farooq', '2022-06-01', NULL, 'Doctor', 'yasmin.farooq@gmail.com', 'House 11, Street 12, City F', 6, 623456789),
+(7, 'Bilal', 'Ibrahim', '2022-07-01', NULL, 'Doctor', 'bilal.ibrahim@gmail.com', 'House 13, Street 14, City G', 7, 723456789),
+(8, 'yasmeen', 'Raza', '2022-08-01', NULL, 'Doctor', 'yasmeen.raza@gmail.com', 'House 15, Street 16, City H', 8, 823456789),
+(9, 'Kamran', 'Javed', '2022-09-01', NULL, 'Doctor', 'kamran.javed@gmail.com', 'House 17, Street 18, City I', 9, 923456789),
+(10, 'Raza', 'Mustafa', '2022-10-01', NULL, 'Doctor', 'raza.mustafa@gmail.com', 'House 19, Street 20, City J', 10, 123456780),
+(11, 'Umer', 'Zafar', '2022-11-01', NULL, 'Doctor', 'umer.zafar@gmail.com', 'House 21, Street 22, City K', 11, 223456780),
+(12, 'Nadia', 'Iqbal', '2022-12-01', NULL, 'Doctor', 'nadia.iqbal@gmail.com', 'House 23, Street 24, City L', 12, 323456780),
+(13, 'Ahmed', 'Qureshi', '2023-01-01', NULL, 'Doctor', 'ahmed.qureshi@gmail.com', 'House 25, Street 26, City M', 13, 423456780),
+(14, 'Farooq', 'Khan', '2023-02-01', NULL, 'Doctor', 'farooq.khan@gmail.com', 'House 27, Street 28, City N', 14, 523456780),
+(15, 'Hina', 'Nasir', '2023-03-01', NULL, 'Doctor', 'hina.nasir@gmail.com', 'House 29, Street 30, City O', 15, 623456780);
 -- ..............Table Doctor...............
 CREATE TABLE IF NOT EXISTS Doctor (
     Doctor_ID INT NOT NULL,
