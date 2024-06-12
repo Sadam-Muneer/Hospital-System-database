@@ -13,6 +13,35 @@ SELECT * FROM staff;
 -- Query 5: Select all rooms
 SELECT * FROM room;
 
+-- update table data
+UPDATE patient
+SET name ="junaid"
+WHERE name = "Ahmar"
+
+-- drop table
+
+ALTER TABLE patient DROP COLUMN gender;
+
+-- add column
+
+ALTER TABLE patient ADD COLUMN email VARCHAR(30);
+-- also column data
+UPDATE patient SET email = 'patient1@example.com' WHERE patient_id = 101;
+UPDATE patient SET email = 'patient2@example.com' WHERE patient_id = 102;
+UPDATE patient SET email = 'patient3@example.com' WHERE patient_id = 103;
+UPDATE patient SET email = 'patient4@example.com' WHERE patient_id = 104;
+UPDATE patient SET email = 'patient5@example.com' WHERE patient_id = 105;
+
+-- delet column email only 
+alter TABLE patient DROP COLUMN email;
+-- rename table name
+ALTER table doctor rename to doctor2;
+
+-- rename column name 
+ALTER table doctor change name doctor_name varchar(20);
+-- modift constraints
+alter TABLE appointment MODIFY date varchar(25);
+
 -- Query 6: Select appointments with corresponding doctor and patient details
 SELECT a.appointment_id, d.name AS doctor_name, p.name AS patient_name, a.date, a.time
 FROM appointment AS a
